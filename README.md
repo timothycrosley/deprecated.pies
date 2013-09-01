@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-pies
-====
-=======
 pies!
 ====================
 
@@ -47,6 +43,3 @@ The following will work unchanged in Python 3 after import (using the Python 2 s
 
 pies will also automatically install and include the most optimal version of OrderedDict for the python environment
 in use, so you should remove any other explicit imports of OrderedDict.
->>>>>>> Stashed changes
-
-The simplest way to write one program that runs on both Python 2 and Python 3.
