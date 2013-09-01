@@ -4,7 +4,7 @@ pies!
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
 
-let's eat some pies!
+Let's eat some pies!
 ======================
 
 Installing pies
@@ -16,7 +16,7 @@ or if you prefer:
     easy_install pies
 
 
-integrating pies into your diet
+Integrating pies into your diet
 ======================
 
 Using and integrating pies into an existing Python 2.6 code base (to achieve Python 3 dual support) couldn't be simpler:
