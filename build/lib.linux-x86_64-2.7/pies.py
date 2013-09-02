@@ -29,6 +29,8 @@ from __future__ import division, print_function, absolute_import, unicode_litera
 
 import sys
 
+__version__ = "1.0.0"
+
 if sys.version > '3':
     import urllib
     from urllib import parse
