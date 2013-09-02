@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='pies',
-      version='1.0.0',
+      version='1.0.1',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
