@@ -4,6 +4,17 @@ pies!
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
 
+How does pies differ from six?
+====================
+
+Pies is significantly smaller and simpler then six because it assumes for
+everything possible the developer is using the Python 3 compatible versions included with Python 2.6+,
+whereas six tries to maintain compatibility with Python 2.4 -
+leading to many more overrides and further into different language territory.
+Additionally where possible pies tries to enable you to not have to change syntax at all -
+pass including the import.
+
+
 Let's eat some pies!
 ======================
 
@@ -41,5 +52,5 @@ The following will work unchanged in Python 3 after import (using the Python 2 s
 - urllib.unquote_plus
 - urllib.urlencode
 
-pies will also automatically install and include the most optimal version of OrderedDict for the python environment
+pies will also automatically install and include the most optimal version of OrderedDict for the Python environment
 in use, so you should remove any other explicit imports of OrderedDict.
