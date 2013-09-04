@@ -32,6 +32,8 @@ Integrating pies into your diet
 
 Using and integrating pies into an existing Python 2.6 code base (to achieve Python 3 dual support) couldn't be simpler:
 
+    from __future__ import absolute_, division, print_function, unicode_literals
+
     from pies import *
 
 You will then simply have to make some simple changes to your Python code:
