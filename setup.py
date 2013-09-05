@@ -3,14 +3,12 @@
 from distutils.core import setup
 import sys
 
-py_modules = ['pies']
 install_requires = []
 if sys.version < '3':
-    install_requires += ['ordereddict', 'argparse']
-    py_modules += ['configparser']
+    install_requires += ['pies2overrides']
 
 setup(name='pies',
-      version='1.0.2',
+      version='1.0.3',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
@@ -19,4 +17,4 @@ setup(name='pies',
       license="GNU GPLv2",
       install_requires=install_requires,
       requires=install_requires,
-      py_modules=py_modules)
+      py_modules=['pies'])
