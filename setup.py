@@ -14,7 +14,7 @@ setup(name='pies',
       author_email='timothy.crosley@gmail.com',
       url='https://github.com/timothycrosley/pies',
       download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-1.0.2.tar.gz?raw=true',
-      license="GNU GPLv2",
+      license="MIT",
       install_requires=install_requires,
       requires=install_requires,
       py_modules=['pies'])

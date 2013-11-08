@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
+import sys
+
+install_requires = []
+if sys.version < '2.7':
+    install_requires += ['ordereddict', 'argparse']
 
 setup(name='pies2overrides',
       version='1.0.0',
@@ -9,7 +14,7 @@ setup(name='pies2overrides',
       author_email='timothy.crosley@gmail.com',
       url='https://github.com/timothycrosley/pies',
       download_url='https://github.com/timothycrosley/pies/blob/master/pies2overrides/dist/pies2overrides-1.0.0.tar.gz?raw=true',
-      license="GNU GPLv2",
-      install_requires=['ordereddict', 'argparse'],
-      requires=['ordereddict', 'argparse'],
+      license="MIT",
+      install_requires=install_requires,
+      requires=install_requires,
       py_modules=['configparser'])

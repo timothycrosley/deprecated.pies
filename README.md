@@ -1,5 +1,7 @@
 pies!
 ====================
+[![PyPi version](https://pypip.in/v/isort/badge.png)](https://crate.io/packages/isort/)
+[![PyPi downloads](https://pypip.in/d/isort/badge.png)](https://crate.io/packages/isort/)
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
