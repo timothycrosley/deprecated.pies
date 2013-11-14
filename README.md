@@ -5,6 +5,15 @@
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
+Overview
+====================
+
+Pies is a Python2 & 3 Compatibility layer with the philosophy that all code should be Python3 code.
+Starting from this viewpoint means that when running on Python3 pies adds virtually no overhead.
+
+Instead of providing a bunch of custom methods (leading to Python code that looks out of place on any version)
+pies aims to back port as many of the Python3 api calls, imports, and objects to Python2 - Relying on special syntax
+only when absolutely necessary.
 
 How does pies differ from six?
 ====================
@@ -13,7 +22,7 @@ Pies is significantly smaller and simpler then six because it assumes for
 everything possible the developer is using the Python 3 compatible versions included with Python 2.6+,
 whereas six tries to maintain compatibility with Python 2.4 -
 leading to many more overrides and further into different language territory.
-Additionally where possible pies tries to enable you to not have to change syntax at all -
+Additionally, as stated above, where possible pies tries to enable you to not have to change syntax at all -
 pass including the import.
 
 
@@ -32,29 +41,97 @@ or if you prefer:
 Integrating pies into your diet
 ======================
 
-Using and integrating pies into an existing Python 2.6 code base (to achieve Python 3 dual support) couldn't be simpler:
+Using and integrating pies into an existing Python 3+ code base (to achieve Python 2 & 3 dual support) couldn't be simpler:
 
     from __future__ import absolute_import, division, print_function, unicode_literals
 
-    from pies import *
+    from pies.overrides import *
 
-You will then simply have to make some simple changes to your Python code:
+Then simply write standard Python3 code, and enjoy Python2 Support.
 
-- u'string' -> u('string')
-- my_iterable.iteritems -> iteritems(my_iterable)
-- my_iterable.itervalues -> itervalues(my_iterable)
-- my_iterable.iterkeys -> iterkeys(my_iterable)
+Work Unchanged (The Good)
+======================
 
-The following will work unchanged in Python 3 after import (using the Python 2 syntax):
+The best part of Pies is how much Python3 code works unchanged in Python2
 
-- xrange
-- long
-- unicode
-- urllib.quote
-- urllib.quote_plus
-- urllib.unquote
-- urllib.unquote_plus
-- urllib.urlencode
+Functions:
 
-pies will also automatically install and include the most optimal version of OrderedDict for the Python environment
-in use, so you should remove any other explicit imports of OrderedDict.
+- round
+- next
+- filter
+- map
+- zip
+- input
+- range
+
+Types:
+
+- chr (creates a unichr object in Python2)
+- str (creates a unicode object in Python2)
+- dict (creating a dict using dict() will give you all the special Python3 itemview results, but using {} will not)
+
+Imports:
+
+- html
+- http
+- xmlrpc
+- _thread
+- builtins
+- configparser
+- copyreg
+- queue
+- reprlib
+- socketserver
+- ipaddress
+- argparse
+- enum (also adds this library to Python 3.0-3.3)
+
+Different Imports (The Bad)
+======================
+
+Some Python3 Modules have moved around so much compared to their Python2 counterpart, that we have created special
+versions of them to obtain the Python3 naming on both environments. Since these modules exist already in Python2
+allowing them to be imported by the Python3 standard name directly is not possible. Instead, you must import these
+modules from pies.
+
+Example:
+
+    form pies import pickle
+
+Full List:
+
+- dbm
+- urllib
+- collections
+- functools
+- imp
+- itertools
+- pickle
+- StringIO
+- sys
+
+Special Syntax (The Ugly)
+======================
+
+Sadly, there is still special syntax that is present for corner cases.
+
+- PY2 - True if running on Python2
+- Py3 - True if running on Python3
+- u('text') - should replace u'text' made available for ease of porting code from Python2
+- itemsview(collection) - should replace collection.iteritems() where you do not control the collection passed in
+- valuesview(collection) - should replace collection.values() where you do not control the collection passed in
+- keysview(collection) - should replace collection.keys() where you do not control the collection passed in
+- execute() - enables Python 3 style exec statements on both environments.
+- integer_types - may want to use isinstance(variable, integer_types) instead of type(variable, int) as long values will not match int in Python2.
+
+What Could be Improved?
+======================
+
+I'm pretty sure a bunch. If you run into any problems or have any ideas please don't hesitate to file a bug, submit a pull request,
+or email me at timothy.crosley@gmail.com.
+
+--------------------------------------------
+
+Thanks and I hope you enjoy pies!
+
+~Timothy

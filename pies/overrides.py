@@ -196,4 +196,4 @@ else:
             native_next(iterator)
 
     __all__ = common + ['round', 'dict', 'apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks', 'str', 'chr',
-                        'input', 'range']
+                        'input', 'range', 'filter', 'map', 'zip']
