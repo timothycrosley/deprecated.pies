@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pies by timothycrosley</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Pies</h1>
+        <p>The simplest (and tastiest) way to write one program that runs on both Python 2 and Python 3.</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/timothycrosley/pies" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/timothycrosley/pies/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/timothycrosley/pies/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a><img src="https://raw.github.com/timothycrosley/pies/develop/logo.png" alt="isort">
+</h1>
+
+<p><a href="https://crate.io/packages/isort/"><img src="https://pypip.in/v/isort/badge.png" alt="PyPi version"></a>
+<a href="https://crate.io/packages/isort/"><img src="https://pypip.in/d/isort/badge.png" alt="PyPi downloads"></a></p>
+
+<p>The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.</p>
+
+<h1>
+<a name="lets-eat-some-pies" class="anchor" href="#lets-eat-some-pies"><span class="octicon octicon-link"></span></a>Let's eat some pies!</h1>
+
+<p>Installing pies</p>
+
+<pre><code>pip install pies
+</code></pre>
+
+<p>or if you prefer:</p>
+
+<pre><code>easy_install pies
+</code></pre>
+
+<h1>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>Pies is a Python2 &amp; 3 Compatibility layer with the philosophy that all code should be Python3 code.
+Starting from this viewpoint means that when running on Python3 pies adds virtually no overhead.</p>
+
+<p>Instead of providing a bunch of custom methods (leading to Python code that looks out of place on any version)
+pies aims to back port as many of the Python3 api calls, imports, and objects to Python2 - Relying on special syntax
+only when absolutely necessary.</p>
+
+<h1>
+<a name="how-does-pies-differ-from-six" class="anchor" href="#how-does-pies-differ-from-six"><span class="octicon octicon-link"></span></a>How does pies differ from six?</h1>
+
+<p>Pies is significantly smaller and simpler then six because it assumes for
+everything possible the developer is using the Python 3 compatible versions included with Python 2.6+,
+whereas six tries to maintain compatibility with Python 2.4 -
+leading to many more overrides and further into different language territory.
+Additionally, as stated above, where possible pies tries to enable you to not have to change syntax at all.</p>
+
+<h1>
+<a name="integrating-pies-into-your-diet" class="anchor" href="#integrating-pies-into-your-diet"><span class="octicon octicon-link"></span></a>Integrating pies into your diet</h1>
+
+<p>Using and integrating pies into an existing Python 3+ code base (to achieve Python 2 &amp; 3 dual support) couldn't be simpler:</p>
+
+<pre><code>from __future__ import absolute_import, division, print_function, unicode_literals
+
+from pies.overrides import *
+</code></pre>
+
+<p>Then simply write standard Python3 code, and enjoy Python2 Support.</p>
+
+<h1>
+<a name="works-unchanged-the-good" class="anchor" href="#works-unchanged-the-good"><span class="octicon octicon-link"></span></a>Works Unchanged (The Good)</h1>
+
+<p>The best part of Pies is how much Python3 code works unchanged in Python2</p>
+
+<p>Functions:</p>
+
+<ul>
+<li>round</li>
+<li>next</li>
+<li>filter</li>
+<li>map</li>
+<li>zip</li>
+<li>input</li>
+<li>range</li>
+</ul><p>Types:</p>
+
+<ul>
+<li>chr (creates a unichr object in Python2)</li>
+<li>str (creates a unicode object in Python2)</li>
+<li>dict (creating a dict using dict() will give you all the special Python3 itemview results, but using {} will not)</li>
+</ul><p>Imports:</p>
+
+<ul>
+<li>html</li>
+<li>http</li>
+<li>xmlrpc</li>
+<li>_thread</li>
+<li>builtins</li>
+<li>configparser</li>
+<li>copyreg</li>
+<li>queue</li>
+<li>reprlib</li>
+<li>socketserver</li>
+<li>ipaddress</li>
+<li>argparse</li>
+<li>enum (also adds this library to Python 3.0-3.3)</li>
+</ul><h1>
+<a name="different-imports-the-bad" class="anchor" href="#different-imports-the-bad"><span class="octicon octicon-link"></span></a>Different Imports (The Bad)</h1>
+
+<p>Some Python3 Modules have moved around so much compared to their Python2 counterpart, that I found it necessary to create special
+versions of them to obtain the Python3 naming on both environments. Since these modules exist already in Python2
+allowing them to be imported by the Python3 module name directly is not possible. Instead, you must import these
+modules from pies.</p>
+
+<p>Example:</p>
+
+<pre><code>form pies import pickle
+</code></pre>
+
+<p>Full List:</p>
+
+<ul>
+<li>dbm</li>
+<li>urllib</li>
+<li>collections</li>
+<li>functools</li>
+<li>imp</li>
+<li>itertools</li>
+<li>pickle</li>
+<li>StringIO</li>
+<li>sys</li>
+</ul><h1>
+<a name="special-syntax-the-ugly" class="anchor" href="#special-syntax-the-ugly"><span class="octicon octicon-link"></span></a>Special Syntax (The Ugly)</h1>
+
+<p>Sadly, there is still special syntax that is present for corner cases.</p>
+
+<ul>
+<li>PY2 - True if running on Python2</li>
+<li>PY3 - True if running on Python3</li>
+<li>u('text') - should replace u'text' made available for ease of porting code from Python2</li>
+<li>itemsview(collection) - should replace collection.iteritems() where you do not control the collection passed in</li>
+<li>valuesview(collection) - should replace collection.values() where you do not control the collection passed in</li>
+<li>keysview(collection) - should replace collection.keys() where you do not control the collection passed in</li>
+<li>execute() - enables Python 3 style exec statements on both environments.</li>
+<li>integer_types - may want to use isinstance(variable, integer_types) instead of type(variable, int) as long values will not match int in Python2.</li>
+</ul><h1>
+<a name="what-could-be-improved" class="anchor" href="#what-could-be-improved"><span class="octicon octicon-link"></span></a>What Could be Improved?</h1>
+
+<p>I'm pretty sure a bunch. If you run into any problems or have any ideas please don't hesitate to file a bug, submit a pull request,
+or email me at <a href="mailto:timothy.crosley@gmail.com">timothy.crosley@gmail.com</a>.</p>
+
+<hr><p>Thanks and I hope you enjoy pies!</p>
+
+<p>~Timothy</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/timothycrosley">timothycrosley</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
