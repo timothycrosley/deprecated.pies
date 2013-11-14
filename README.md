@@ -87,9 +87,9 @@ Imports:
 Different Imports (The Bad)
 ======================
 
-Some Python3 Modules have moved around so much compared to their Python2 counterpart, that we have created special
+Some Python3 Modules have moved around so much compared to their Python2 counterpart, that I found it necessary to create special
 versions of them to obtain the Python3 naming on both environments. Since these modules exist already in Python2
-allowing them to be imported by the Python3 standard name directly is not possible. Instead, you must import these
+allowing them to be imported by the Python3 module name directly is not possible. Instead, you must import these
 modules from pies.
 
 Example:
