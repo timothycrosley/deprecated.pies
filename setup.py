@@ -7,7 +7,7 @@ from distutils.core import setup
 
 install_requires = []
 if sys.version < '3':
-    install_requires += ['pies2overrides==2.0.0']
+    install_requires += ['pies2overrides']
 elif sys.version < '3.2':
     install_requires += ['argparse']
 
