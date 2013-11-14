@@ -5,6 +5,17 @@
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
+Let's eat some pies!
+======================
+
+Installing pies
+
+    pip install pies
+
+or if you prefer:
+
+    easy_install pies
+
 Overview
 ====================
 
@@ -24,19 +35,6 @@ whereas six tries to maintain compatibility with Python 2.4 -
 leading to many more overrides and further into different language territory.
 Additionally, as stated above, where possible pies tries to enable you to not have to change syntax at all -
 pass including the import.
-
-
-Let's eat some pies!
-======================
-
-Installing pies
-
-    pip install pies
-
-or if you prefer:
-
-    easy_install pies
-
 
 Integrating pies into your diet
 ======================
