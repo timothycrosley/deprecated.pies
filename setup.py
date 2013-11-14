@@ -3,7 +3,10 @@
 from __future__ import absolute_import
 
 import sys
-from distutils.core import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 install_requires = []
 if sys.version_info[0] < 3:
