@@ -7,7 +7,7 @@ from distutils.core import setup
 
 install_requires = []
 if sys.version < '3':
-    install_requires += ['pies2overrides']
+    install_requires += ['pies2overrides==2.0.0']
 elif sys.version < '3.2':
     install_requires += ['argparse']
 
@@ -15,7 +15,7 @@ if sys.version < '3.4':
     install_requires += ['enum34']
 
 setup(name='pies',
-      version='1.0.3',
+      version='2.0.0',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
