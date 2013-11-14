@@ -1,7 +1,7 @@
-![isort](https://raw.github.com/timothycrosley/pies/develop/logo.png)
+![Pies](https://raw.github.com/timothycrosley/pies/develop/logo.png)
 ====================
-[![PyPi version](https://pypip.in/v/isort/badge.png)](https://crate.io/packages/isort/)
-[![PyPi downloads](https://pypip.in/d/isort/badge.png)](https://crate.io/packages/isort/)
+[![PyPi version](https://pypip.in/v/pies/badge.png)](https://crate.io/packages/pies/)
+[![PyPi downloads](https://pypip.in/d/pies/badge.png)](https://crate.io/packages/pies/)
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 

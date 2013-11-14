@@ -26,7 +26,7 @@ from numbers import Integral
 
 from .version_info import PY2, PY3, VERSION
 
-__version__ = "1.0.3"
+__version__ = "2.0.0"
 
 native_dict = dict
 native_round = round
@@ -69,12 +69,13 @@ if PY3:
     urllib.unquote = parse.unquote
     urllib.unquote_plus = parse.unquote_plus
     urllib.urlencode = parse.urlencode
-    execute = getattr('builtins', 'exec')
-    if VERSION < '3.2':
+    execute = getattr(builtins, 'exec')
+    if VERSION[1] < 2:
         def callable(entity):
             return hasattr(entity, '__call__')
+        common.append('callable')
 
-    __all__ = common + ['OrderedDict', 'urllib', 'callable']
+    __all__ = common + ['OrderedDict', 'urllib']
 else:
     from itertools import ifilter as filter
     from itertools import imap as map
@@ -163,13 +164,13 @@ else:
             return AttributeError("'dict' object has no attribute 'has_key'")
 
         def items(self):
-            return dict_items(self, 'iteritems')
+            return dict_items(self)
 
         def keys(self):
-            return dict_keys(self, 'iterkeys')
+            return dict_keys(self)
 
         def values(self):
-            return dict_values(self, 'itervalues')
+            return dict_values(self)
 
     def round(number, ndigits=None):
         return_int = False
