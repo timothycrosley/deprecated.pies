@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
-import sys
+from __future__ import absolute_import
 
-install_requires = []
+import sys
+from distutils.core import setup
+
+install_requires = ['ipaddress']
 if sys.version < '2.7':
     install_requires += ['ordereddict', 'argparse']
 
@@ -17,4 +19,4 @@ setup(name='pies2overrides',
       license="MIT",
       install_requires=install_requires,
       requires=install_requires,
-      py_modules=['configparser'])
+      py_modules=['configparser', 'builtins'])

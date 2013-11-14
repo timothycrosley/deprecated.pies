@@ -1,4 +1,4 @@
-pies!
+![isort](https://raw.github.com/timothycrosley/pies/develop/logo.png)
 ====================
 [![PyPi version](https://pypip.in/v/isort/badge.png)](https://crate.io/packages/isort/)
 [![PyPi downloads](https://pypip.in/d/isort/badge.png)](https://crate.io/packages/isort/)

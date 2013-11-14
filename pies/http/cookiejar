@@ -1,0 +1,6 @@
+from ..version_info import PY3
+
+if PY3:
+    from http.cookiejar import *
+else:
+    from cookielib import *
