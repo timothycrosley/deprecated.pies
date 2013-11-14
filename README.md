@@ -33,8 +33,7 @@ Pies is significantly smaller and simpler then six because it assumes for
 everything possible the developer is using the Python 3 compatible versions included with Python 2.6+,
 whereas six tries to maintain compatibility with Python 2.4 -
 leading to many more overrides and further into different language territory.
-Additionally, as stated above, where possible pies tries to enable you to not have to change syntax at all -
-pass including the import.
+Additionally, as stated above, where possible pies tries to enable you to not have to change syntax at all.
 
 Integrating pies into your diet
 ======================
@@ -114,7 +113,7 @@ Special Syntax (The Ugly)
 Sadly, there is still special syntax that is present for corner cases.
 
 - PY2 - True if running on Python2
-- Py3 - True if running on Python3
+- PY3 - True if running on Python3
 - u('text') - should replace u'text' made available for ease of porting code from Python2
 - itemsview(collection) - should replace collection.iteritems() where you do not control the collection passed in
 - valuesview(collection) - should replace collection.values() where you do not control the collection passed in
