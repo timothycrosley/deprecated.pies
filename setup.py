@@ -1,11 +1,18 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from __future__ import absolute_import
+
 import sys
+from distutils.core import setup
 
 install_requires = []
 if sys.version < '3':
     install_requires += ['pies2overrides']
+elif sys.version < '3.2':
+    install_requires += ['argparse']
+
+if sys.version < '3.4':
+    install_requires += ['enum34']
 
 setup(name='pies',
       version='1.0.3',
