@@ -6,7 +6,7 @@ import sys
 from distutils.core import setup
 
 install_requires = ['ipaddress']
-if sys.version < '2.7':
+if sys.version_info[0] == 2 and sys.version_info[1] < 7:
     install_requires += ['ordereddict', 'argparse']
 
 setup(name='pies2overrides',
@@ -19,4 +19,5 @@ setup(name='pies2overrides',
       license="MIT",
       install_requires=install_requires,
       requires=install_requires,
-      py_modules=['configparser', 'builtins'])
+      py_modules=['configparser', 'builtins', '_thread', 'copyreg', 'queue', 'reprlib', 'socketserver'],
+      packages=['html', 'http', 'xmlrpc'])
