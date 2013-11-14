@@ -47,7 +47,7 @@ Using and integrating pies into an existing Python 3+ code base (to achieve Pyth
 
 Then simply write standard Python3 code, and enjoy Python2 Support.
 
-Work Unchanged (The Good)
+Works Unchanged (The Good)
 ======================
 
 The best part of Pies is how much Python3 code works unchanged in Python2
