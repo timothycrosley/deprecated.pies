@@ -26,7 +26,7 @@ from numbers import Integral
 
 from .version_info import PY2, PY3, VERSION
 
-__version__ = "2.0.0"
+__version__ = "2.0.1"
 
 native_dict = dict
 native_round = round
@@ -95,12 +95,14 @@ else:
     range = xrange
     integer_types = (int, long)
 
-    for removed in ('apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks'):
+    def _create_not_allowed(name):
         def _not_allow(*args, **kwargs):
-            raise NameError("name '{0}' is not defined".format(removed))
+            raise NameError("name '{0}' is not defined".format(name))
+        _not_allow.__name__ = name
+        return _not_allow
 
-        _not_allow.__name__ = removed
-        globals()[removed] = _not_allow
+    for removed in ('apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks'):
+        globals()[removed] = _create_not_allowed(removed)
 
     def u(string):
         return codecs.unicode_escape_decode(string[0])
