@@ -95,12 +95,14 @@ else:
     range = xrange
     integer_types = (int, long)
 
-    for removed in ('apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks'):
+    def _create_not_allowed(name):
         def _not_allow(*args, **kwargs):
-            raise NameError("name '{0}' is not defined".format(removed))
+            raise NameError("name '{0}' is not defined".format(name))
+        _not_allow.__name__ = name
+        return _not_allow
 
-        _not_allow.__name__ = removed
-        globals()[removed] = _not_allow
+    for removed in ('apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks'):
+        globals()[removed] = _create_not_allowed(removed)
 
     def u(string):
         return codecs.unicode_escape_decode(string[0])
