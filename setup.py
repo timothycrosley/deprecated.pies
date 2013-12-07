@@ -20,13 +20,13 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 4:
 try:
    import pypandoc
    readme = pypandoc.convert('README.md', 'rst')
-except (IOError, ImportError):
+except (IOError, ImportError, OSError, RuntimeError):
    readme = ''
 
 setup(name='pies',
       version='2.0.1',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
-      long_readme=readme,
+      long_description=readme,
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
       url='https://github.com/timothycrosley/pies',
