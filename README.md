@@ -2,6 +2,7 @@
 ====================
 [![PyPI version](https://badge.fury.io/py/pies.png)](http://badge.fury.io/py/pies)
 [![PyPi downloads](https://pypip.in/d/pies/badge.png)](https://crate.io/packages/pies/)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/timothycrosley/isort/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
@@ -63,6 +64,7 @@ Functions:
 
 Types:
 
+- object (__str__ automatically has correct behavior on all versions of Python)
 - chr (creates a unichr object in Python2)
 - str (creates a unicode object in Python2)
 - dict (creating a dict using dict() will give you all the special Python3 itemview results, but using {} will not)
@@ -106,6 +108,7 @@ Full List:
 - pickle
 - StringIO
 - sys
+- unittest
 
 Special Syntax (The Ugly)
 ======================
@@ -120,6 +123,7 @@ Sadly, there is still special syntax that is present for corner cases.
 - keysview(collection) - should replace collection.keys() where you do not control the collection passed in
 - execute() - enables Python 3 style exec statements on both environments.
 - integer_types - may want to use isinstance(variable, integer_types) instead of type(variable, int) as long values will not match int in Python2.
+- NewClass(with_metaclass(metaclass, parent_class)) - Should replace both "__metaclass__ = metaclass" and "NewClass(metaclass=metaclass)" as a way to assign meta-classes.
 
 What Could be Improved?
 ======================
@@ -131,4 +135,4 @@ or email me at timothy.crosley@gmail.com.
 
 Thanks and I hope you enjoy pies!
 
-~Timothy
+~Timothy Crosley

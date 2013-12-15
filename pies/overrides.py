@@ -24,9 +24,8 @@ from __future__ import absolute_import
 import functools
 from numbers import Integral
 
+from ._utils import unmodified_isinstance, with_metaclass
 from .version_info import PY2, PY3, VERSION
-
-__version__ = "2.0.1"
 
 native_dict = dict
 native_round = round
@@ -38,10 +37,11 @@ native_str = str
 native_chr = chr
 native_input = input
 native_next = next
+native_object = object
 
 common = ['native_dict', 'native_round', 'native_filter', 'native_map', 'native_range', 'native_str', 'native_chr',
           'native_input', 'PY2', 'PY3', 'u', 'itemsview', 'valuesview', 'keysview', 'execute', 'integer_types',
-          'native_next']
+          'native_next', 'native_object', 'with_metaclass']
 
 if PY3:
     import urllib
@@ -161,7 +161,7 @@ else:
     def keysview(collection):
         return dict_keys(collection)
 
-    class dict(native_dict):
+    class dict(unmodified_isinstance(native_dict)):
         def has_key(self, *args, **kwargs):
             return AttributeError("'dict' object has no attribute 'has_key'")
 
@@ -198,5 +198,20 @@ else:
         except Exception:
             native_next(iterator)
 
+    class FixStr(type):
+        def __new__(cls, name, bases, dct):
+            if '__str__' in dct:
+                dct['__unicode__'] = dct['__str__']
+            dct['__str__'] = lambda self: self.__unicode__().encode('utf-8')
+            return type.__new__(cls, name, bases, dct)
+
+        def __instancecheck__(cls, instance):
+            if cls.__name__ == "object":
+                return isinstance(instance, native_object)
+            return type.__instancecheck__(cls, instance)
+
+    class object(with_metaclass(FixStr, object)):
+        pass
+
     __all__ = common + ['round', 'dict', 'apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks', 'str', 'chr',
-                        'input', 'range', 'filter', 'map', 'zip']
+                        'input', 'range', 'filter', 'map', 'zip', 'object']
