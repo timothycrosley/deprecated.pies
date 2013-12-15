@@ -64,6 +64,7 @@ Functions:
 
 Types:
 
+- object (__str__ automatically has correct behavior on all versions of Python)
 - chr (creates a unichr object in Python2)
 - str (creates a unicode object in Python2)
 - dict (creating a dict using dict() will give you all the special Python3 itemview results, but using {} will not)
