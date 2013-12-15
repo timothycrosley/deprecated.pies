@@ -55,6 +55,10 @@ def unmodified_isinstance(*bases):
     """
     class UnmodifiedIsInstance(type):
         def __instancecheck__(cls, instance):
+            if cls.__name__ in (str(base.__name__) for base in bases):
+                return isinstance(instance, bases)
+            return type.__instancecheck__(cls, instance)
+
             return isinstance(instance, bases)
 
     return with_metaclass(UnmodifiedIsInstance, *bases)

@@ -208,7 +208,9 @@ else:
             return type.__new__(cls, name, bases, dct)
 
         def __instancecheck__(cls, instance):
-            return isinstance(instance, native_object)
+            if cls.__name__ == "object":
+                return isinstance(instance, native_object)
+            return type.__instancecheck__(cls, instance)
 
     class object(with_metaclass(FixStr, object)):
         pass
