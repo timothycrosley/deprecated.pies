@@ -107,6 +107,7 @@ Full List:
 - pickle
 - StringIO
 - sys
+- unittest
 
 Special Syntax (The Ugly)
 ======================
@@ -132,4 +133,4 @@ or email me at timothy.crosley@gmail.com.
 
 Thanks and I hope you enjoy pies!
 
-~Timothy
+~Timothy Crosley
