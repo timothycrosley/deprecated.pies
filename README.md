@@ -107,6 +107,7 @@ Full List:
 - pickle
 - StringIO
 - sys
+- unittest
 
 Special Syntax (The Ugly)
 ======================
