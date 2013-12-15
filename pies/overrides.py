@@ -27,8 +27,6 @@ from numbers import Integral
 from ._utils import unmodified_isinstance, with_metaclass
 from .version_info import PY2, PY3, VERSION
 
-__version__ = "2.0.1"
-
 native_dict = dict
 native_round = round
 native_filter = filter
