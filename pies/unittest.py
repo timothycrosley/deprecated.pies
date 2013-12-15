@@ -3,6 +3,8 @@ from __future__ import absolute_import
 import sys
 from unittest import *
 
+NativeTestCase = TestCase
+
 if sys.version_info < (2, 7):
     skip = lambda why: (lambda func: 'skip')
     skipIf = lambda cond, why: (skip(why) if cond else lambda func: func)

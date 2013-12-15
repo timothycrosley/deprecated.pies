@@ -41,7 +41,7 @@ native_next = next
 
 common = ['native_dict', 'native_round', 'native_filter', 'native_map', 'native_range', 'native_str', 'native_chr',
           'native_input', 'PY2', 'PY3', 'u', 'itemsview', 'valuesview', 'keysview', 'execute', 'integer_types',
-          'native_next']
+          'native_next', 'with_metaclass']
 
 if PY3:
     import urllib
@@ -200,3 +200,28 @@ else:
 
     __all__ = common + ['round', 'dict', 'apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks', 'str', 'chr',
                         'input', 'range', 'filter', 'map', 'zip']
+
+def with_metaclass(meta, *bases):
+    """
+        Enables use of meta classes across Python Versions.
+        taken from jinja2/_compat.py
+
+        Use it like this::
+
+            class BaseForm(object):
+                pass
+
+            class FormType(type):
+                pass
+
+            class Form(with_metaclass(FormType, BaseForm)):
+                pass
+    """
+    class metaclass(meta):
+        __call__ = type.__call__
+        __init__ = type.__init__
+        def __new__(cls, name, this_bases, d):
+            if this_bases is None:
+                return type.__new__(cls, name, (), d)
+            return meta(name, bases, d)
+    return metaclass('temporary_class', None, {})

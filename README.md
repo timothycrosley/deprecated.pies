@@ -122,6 +122,7 @@ Sadly, there is still special syntax that is present for corner cases.
 - keysview(collection) - should replace collection.keys() where you do not control the collection passed in
 - execute() - enables Python 3 style exec statements on both environments.
 - integer_types - may want to use isinstance(variable, integer_types) instead of type(variable, int) as long values will not match int in Python2.
+- NewClass(with_metaclass(metaclass, parent_class)) - Should replace both "__metaclass__ = metaclass" and "NewClass(metaclass=metaclass)" as a way to assign meta-classes.
 
 What Could be Improved?
 ======================
