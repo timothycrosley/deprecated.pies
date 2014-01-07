@@ -21,8 +21,8 @@ else:
     def argument_names(node):
         return [arg.arg for arg in node.args.args]
 
-    def kw_only_argument_names(self):
+    def kw_only_argument_names(node):
         return [arg.arg for arg in node.args.kwonlyargs]
 
-    def kw_only_default_count(self):
+    def kw_only_default_count(node):
         return sum(1 for n in node.args.kw_defaults if n is not None)
