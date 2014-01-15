@@ -55,7 +55,7 @@ def unmodified_isinstance(*bases):
 
         it allows calls against passed in built in instances to pass even if there not a subclass
     """
-    class UnmodifiedIsInstance(object):
+    class UnmodifiedIsInstance(type):
         if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
 
             @classmethod
