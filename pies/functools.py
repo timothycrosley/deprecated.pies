@@ -19,19 +19,20 @@ if sys.version_info < (3, 2):
     def lru_cache(maxsize=100):
         """Least-recently-used cache decorator.
 
-            Taking from: https://github.com/MiCHiLU/python-functools32/blob/master/functools32/functools32.py
-            with slight modifications.
+        Taking from: https://github.com/MiCHiLU/python-functools32/blob/master/functools32/functools32.py
+        with slight modifications.
 
-            If *maxsize* is set to None, the LRU features are disabled and the cache
-            can grow without bound.
+        If *maxsize* is set to None, the LRU features are disabled and the cache
+        can grow without bound.
 
-            Arguments to the cached function must be hashable.
+        Arguments to the cached function must be hashable.
 
-            View the cache statistics named tuple (hits, misses, maxsize, currsize) with
-            f.cache_info().  Clear the cache and statistics with f.cache_clear().
-            Access the underlying function with f.__wrapped__.
+        View the cache statistics named tuple (hits, misses, maxsize, currsize) with
+        f.cache_info().  Clear the cache and statistics with f.cache_clear().
+        Access the underlying function with f.__wrapped__.
 
-            See:  http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used
+        See:  http://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used
+        
         """
         def decorating_function(user_function, tuple=tuple, sorted=sorted, len=len, KeyError=KeyError):
             hits, misses = [0], [0]
@@ -80,12 +81,12 @@ if sys.version_info < (3, 2):
                     return result
 
             def cache_info():
-                """Report CACHE statistics"""
+                """Report CACHE statistics."""
                 with lock:
                     return _CacheInfo(hits[0], misses[0], maxsize, len(CACHE))
 
             def cache_clear():
-                """Clear the CACHE and CACHE statistics"""
+                """Clear the CACHE and CACHE statistics."""
                 with lock:
                     CACHE.clear()
                     hits[0] = misses[0] = 0
