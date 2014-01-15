@@ -21,7 +21,9 @@
 """
 from __future__ import absolute_import
 
+import abc
 import functools
+import sys
 from numbers import Integral
 
 from ._utils import unmodified_isinstance, with_metaclass
@@ -205,10 +207,23 @@ else:
             dct['__str__'] = lambda self: self.__unicode__().encode('utf-8')
             return type.__new__(cls, name, bases, dct)
 
-        def __instancecheck__(cls, instance):
-            if cls.__name__ == "object":
-                return isinstance(instance, native_object)
-            return type.__instancecheck__(cls, instance)
+        if sys.version_info[1] <= 6:
+            def __instancecheck__(cls, instance):
+                if cls.__name__ == "object":
+                    return isinstance(instance, native_object)
+                
+                subclass = getattr(instance, '__class__', None)
+                subtype = type(instance)
+                if subtype is abc._InstanceType:
+                    subtype = subclass
+                if subtype is subclass or subclass is None:
+                    return cls.__subclasscheck__(subtype)
+                return (cls.__subclasscheck__(subclass) or cls.__subclasscheck__(subtype))
+        else:
+            def __instancecheck__(cls, instance):
+                if cls.__name__ == "object":
+                    return isinstance(instance, native_object)
+                return type.__instancecheck__(cls, instance)
 
     class object(with_metaclass(FixStr, object)):
         pass

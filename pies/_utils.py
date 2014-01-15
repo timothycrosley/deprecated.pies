@@ -19,6 +19,8 @@
     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     OTHER DEALINGS IN THE SOFTWARE.
 """
+import abc
+import sys
 
 
 def with_metaclass(meta, *bases):
@@ -53,11 +55,28 @@ def unmodified_isinstance(*bases):
 
         it allows calls against passed in built in instances to pass even if there not a subclass
     """
-    class UnmodifiedIsInstance(type):
-        @classmethod
-        def __instancecheck__(cls, instance):
-            if cls.__name__ in (str(base.__name__) for base in bases):
-                return isinstance(instance, bases)
-            return type.__instancecheck__(cls, instance)
+    class UnmodifiedIsInstance(object):
+        if sys.version_info[0] == 2 and sys.version_info[1] <= 6:
+
+            @classmethod
+            def __instancecheck__(cls, instance):
+                if cls.__name__ in (str(base.__name__) for base in bases):
+                    return isinstance(instance, bases)
+
+                subclass = getattr(instance, '__class__', None)
+                subtype = type(instance)
+                if subtype is abc._InstanceType:
+                    subtype = subclass
+                if subtype is subclass or subclass is None:
+                    return cls.__subclasscheck__(subtype)
+                return (cls.__subclasscheck__(subclass) or cls.__subclasscheck__(subtype))
+        else:
+            @classmethod
+            def __instancecheck__(cls, instance):
+                if cls.__name__ in (str(base.__name__) for base in bases):
+                    return isinstance(instance, bases)
+
+                return type.__instancecheck__(cls, instance)
 
     return with_metaclass(UnmodifiedIsInstance, *bases)
+
