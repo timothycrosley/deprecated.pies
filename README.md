@@ -2,7 +2,8 @@
 ====================
 [![PyPI version](https://badge.fury.io/py/pies.png)](http://badge.fury.io/py/pies)
 [![PyPi downloads](https://pypip.in/d/pies/badge.png)](https://crate.io/packages/pies/)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/timothycrosley/isort/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![License](https://pypip.in/license/pies/badge.png)](https://pypi.python.org/pypi/pies/)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/timothycrosley/pies/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 The simplest (and tastiest) way to write one program that runs on both Python 2.6+ and Python 3.
 
