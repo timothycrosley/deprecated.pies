@@ -97,6 +97,10 @@ else:
     range = xrange
     integer_types = (int, long)
 
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
     def _create_not_allowed(name):
         def _not_allow(*args, **kwargs):
             raise NameError("name '{0}' is not defined".format(name))
