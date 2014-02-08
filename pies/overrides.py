@@ -211,10 +211,15 @@ else:
             def __instancecheck__(cls, instance):
                 if cls.__name__ == "object":
                     return isinstance(instance, native_object)
-                
+
                 subclass = getattr(instance, '__class__', None)
                 subtype = type(instance)
-                if subtype is abc._InstanceType:
+                instance_type = getattr(abc, '_InstanceType', None)
+                if not instance_type:
+                    class test_object:
+                        pass
+                    instance_type = type(test_object)
+                if subtype is instance_type:
                     subtype = subclass
                 if subtype is subclass or subclass is None:
                     return cls.__subclasscheck__(subtype)
