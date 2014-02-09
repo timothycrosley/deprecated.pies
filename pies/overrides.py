@@ -1,23 +1,23 @@
-"""
-    pies/overrides.py
+"""pies/overrides.py.
 
-    Overrides Python syntax to conform to the Python3 version as much as possible using a '*' import
+Overrides Python syntax to conform to the Python3 version as much as possible using a '*' import
 
-    Copyright (C) 2013  Timothy Edmund Crosley
+Copyright (C) 2013  Timothy Edmund Crosley
 
-    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-    documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-    the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
-    to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be included in all copies or
-    substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or
+substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-    THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-    CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-    OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
 """
 from __future__ import absolute_import
 
@@ -96,6 +96,10 @@ else:
     input = raw_input
     range = xrange
     integer_types = (int, long)
+
+    import sys
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
     def _create_not_allowed(name):
         def _not_allow(*args, **kwargs):
@@ -211,10 +215,15 @@ else:
             def __instancecheck__(cls, instance):
                 if cls.__name__ == "object":
                     return isinstance(instance, native_object)
-                
+
                 subclass = getattr(instance, '__class__', None)
                 subtype = type(instance)
-                if subtype is abc._InstanceType:
+                instance_type = getattr(abc, '_InstanceType', None)
+                if not instance_type:
+                    class test_object:
+                        pass
+                    instance_type = type(test_object)
+                if subtype is instance_type:
                     subtype = subclass
                 if subtype is subclass or subclass is None:
                     return cls.__subclasscheck__(subtype)
