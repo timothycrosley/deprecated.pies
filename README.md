@@ -96,7 +96,7 @@ modules from pies.
 
 Example:
 
-    form pies import pickle
+    from pies import pickle
 
 Full List:
 
