@@ -110,8 +110,11 @@ else:
     for removed in ('apply', 'cmp', 'coerce', 'execfile', 'raw_input', 'unpacks'):
         globals()[removed] = _create_not_allowed(removed)
 
-    def u(string):
-        return codecs.unicode_escape_decode(string[0])
+    def u(s):
+        if isinstance(s, unicode):
+            return s
+        else:
+            return unicode(s.replace(r'\\', r'\\\\'), "unicode_escape")
 
     def execute(_code_, _globs_=None, _locs_=None):
         """Execute code in a namespace."""
