@@ -2,6 +2,7 @@
 ====================
 [![PyPI version](https://badge.fury.io/py/pies.png)](http://badge.fury.io/py/pies)
 [![PyPi downloads](https://pypip.in/d/pies/badge.png)](https://crate.io/packages/pies/)
+[![Build Status](https://travis-ci.org/timothycrosley/pies.png?branch=develop)](https://travis-ci.org/timothycrosley/pies)
 [![License](https://pypip.in/license/pies/badge.png)](https://pypi.python.org/pypi/pies/)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/timothycrosley/pies/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
