@@ -98,7 +98,11 @@ else:
     integer_types = (int, long)
 
     import sys
+    stdout = sys.stdout
+    stderr = sys.stderr
     reload(sys)
+    sys.stdout = stdout
+    sys.stderr = stderr
     sys.setdefaultencoding('utf-8')
 
     def _create_not_allowed(name):
