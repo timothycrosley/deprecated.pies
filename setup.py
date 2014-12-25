@@ -12,7 +12,7 @@ install_requires = []
 if sys.version_info[0] < 3:
     install_requires += ['pies2overrides']
 elif sys.version_info[1] < 2:
-    install_requires += ['argparse']
+    install_requires += ['argparse', 'configparser']
 
 if sys.version_info[0] < 3 or sys.version_info[1] < 4:
     install_requires += ['enum34']
