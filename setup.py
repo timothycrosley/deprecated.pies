@@ -24,13 +24,13 @@ except (IOError, ImportError, OSError, RuntimeError):
    readme = ''
 
 setup(name='pies',
-      version='2.6.2',
+      version='2.6.3',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
       long_description=readme,
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
       url='https://github.com/timothycrosley/pies',
-      download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-2.6.2.tar.gz?raw=true',
+      download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-2.6.3.tar.gz?raw=true',
       license="MIT",
       install_requires=install_requires,
       requires=install_requires,
