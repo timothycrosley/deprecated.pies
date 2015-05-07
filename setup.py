@@ -37,7 +37,7 @@ setup(name='pies',
                       ':python_version=="3.0" or python_version=="3.1" or '
                       'python_version=="3.2" or python_version=="3.3"': ['enum34'],
                       ':python_version=="3.0" or python_version=="3.1" or python_version=="3.2"':
-                          ['argparse', 'configparser']}
+                          ['argparse', 'configparser']},
       requires=install_requires,
       packages=['pies'],
       keywords='Python, Python2, Python3, six, future, refactoring, single-code-base',
