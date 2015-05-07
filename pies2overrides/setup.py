@@ -23,5 +23,6 @@ setup(name='pies2overrides',
       license="MIT",
       install_requires=install_requires,
       requires=install_requires,
+      extras_require={':python_version=="2.6"': ['ordereddict', 'argparse']},
       py_modules=['configparser', 'builtins', '_thread', 'copyreg', 'queue', 'reprlib', 'socketserver'],
       packages=['html', 'http', 'xmlrpc'])
