@@ -33,6 +33,11 @@ setup(name='pies',
       download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-2.6.3.tar.gz?raw=true',
       license="MIT",
       install_requires=install_requires,
+      extras_require={':python_version=="2.6" or python_version=="2.7"': ['pies2overrides', 'enum34'],
+                      ':python_version=="3.0" or python_version=="3.1" or '
+                      'python_version=="3.2" or python_version=="3.3"': ['enum34'],
+                      ':python_version=="3.0" or python_version=="3.1" or python_version=="3.2"':
+                          ['argparse', 'configparser']}
       requires=install_requires,
       packages=['pies'],
       keywords='Python, Python2, Python3, six, future, refactoring, single-code-base',
