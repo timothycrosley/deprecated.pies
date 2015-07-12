@@ -8,15 +8,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-install_requires = []
-if sys.version_info[0] < 3:
-    install_requires += ['pies2overrides']
-elif sys.version_info[1] < 2:
-    install_requires += ['argparse', 'configparser']
-
-if sys.version_info[0] < 3 or sys.version_info[1] < 4:
-    install_requires += ['enum34']
-
 try:
    import pypandoc
    readme = pypandoc.convert('README.md', 'rst')
@@ -24,21 +15,19 @@ except (IOError, ImportError, OSError, RuntimeError):
    readme = ''
 
 setup(name='pies',
-      version='2.6.5',
+      version='2.6.7',
       description='The simplest way to write one program that runs on both Python 2 and Python 3.',
       long_description=readme,
       author='Timothy Crosley',
       author_email='timothy.crosley@gmail.com',
       url='https://github.com/timothycrosley/pies',
-      download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-2.6.5.tar.gz?raw=true',
+      download_url='https://github.com/timothycrosley/pies/blob/master/dist/pies-2.6.7.tar.gz?raw=true',
       license="MIT",
-      install_requires=install_requires,
       extras_require={':python_version=="2.6" or python_version=="2.7"': ['pies2overrides', 'enum34'],
                       ':python_version=="3.0" or python_version=="3.1" or '
                       'python_version=="3.2" or python_version=="3.3"': ['enum34'],
                       ':python_version=="3.0" or python_version=="3.1" or python_version=="3.2"':
                           ['argparse', 'configparser']},
-      requires=install_requires,
       packages=['pies'],
       keywords='Python, Python2, Python3, six, future, refactoring, single-code-base',
       classifiers=['Development Status :: 5 - Production/Stable',
