@@ -32,7 +32,7 @@ only when absolutely necessary.
 How does pies differ from six?
 ====================
 
-Pies is significantly smaller and simpler then six because it assumes for
+Pies is significantly smaller and simpler than six because it assumes for
 everything possible the developer is using the Python 3 compatible versions included with Python 2.6+,
 whereas six tries to maintain compatibility with Python 2.4 -
 leading to many more overrides and further into different language territory.
