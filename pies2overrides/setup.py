@@ -20,5 +20,5 @@ setup(name='pies2overrides',
       install_requires=['ipaddress'],
       requires=['ipaddress'],
       extras_require={':python_version=="2.6"': ['ordereddict', 'argparse']},
-      py_modules=['configparser', 'builtins', '_thread', 'copyreg', 'queue', 'reprlib', 'socketserver'],
+      py_modules=['configparser', 'builtins', 'copyreg', 'queue', 'reprlib', 'socketserver'],
       packages=['html', 'http', 'xmlrpc'])
