@@ -207,4 +207,4 @@ if sys.version_info <= (3, 2):
             wrapper.cache_clear = cache_clear
             return update_wrapper(wrapper, user_function)
 
-        return decorating_function()
+        return decorating_function
