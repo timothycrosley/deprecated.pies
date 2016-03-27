@@ -21,6 +21,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 """
 from __future__ import absolute_import
 
+import math as _math
 import abc
 import functools
 import sys
@@ -97,13 +98,14 @@ else:
     range = xrange
     integer_types = (int, long)
 
-    import sys
-    stdout = sys.stdout
-    stderr = sys.stderr
-    reload(sys)
-    sys.stdout = stdout
-    sys.stderr = stderr
-    sys.setdefaultencoding('utf-8')
+    # Reloading the sys module kills IPython's output printing.
+    #import sys
+    #stdout = sys.stdout
+    #stderr = sys.stderr
+    #reload(sys)
+    #sys.stdout = stdout
+    #sys.stderr = stderr
+    #sys.setdefaultencoding('utf-8')
 
     def _create_not_allowed(name):
         def _not_allow(*args, **kwargs):
@@ -197,6 +199,9 @@ else:
 
         if ndigits < 0:
             raise NotImplementedError('negative ndigits not supported yet')
+        # Python 2.6 doesn't support from_float.
+        if sys.version_info[1] <= 6:
+            return native_round(number, ndigits)
         exponent = Decimal('10') ** (-ndigits)
         d = Decimal.from_float(number).quantize(exponent,
                                                 rounding=ROUND_HALF_EVEN)
